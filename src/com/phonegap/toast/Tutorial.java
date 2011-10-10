@@ -20,12 +20,17 @@ public class Tutorial extends Plugin {
 	}
 
 	private PluginResult showToast(JSONArray args) {
-		String message;
+		final String message;
 		try {
 			message = args.getString(0);
-			
-			Toast myToast = Toast.makeText(ctx, message, Toast.LENGTH_SHORT);
-			myToast.show();
+			ctx.runOnUiThread(new Runnable()
+	    	{
+				public void run() {
+					Toast myToast = Toast.makeText(ctx, message, Toast.LENGTH_SHORT);
+					myToast.show();
+				}
+	    	});
+		
 			return new PluginResult(PluginResult.Status.OK);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
