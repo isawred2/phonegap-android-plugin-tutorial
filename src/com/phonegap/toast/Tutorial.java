@@ -23,7 +23,9 @@ public class Tutorial extends Plugin {
 		String message;
 		try {
 			message = args.getString(0);
-			Toast.makeText(ctx, message, Toast.LENGTH_SHORT).show();
+			
+			Toast myToast = Toast.makeText(ctx, message, Toast.LENGTH_SHORT);
+			myToast.show();
 			return new PluginResult(PluginResult.Status.OK);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
